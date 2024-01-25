@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface ToDoListTests : XCTestCase
+@interface TaskManagerTests : XCTestCase
 
 @end
 
-@implementation ToDoListTests
+@implementation TaskManagerTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
