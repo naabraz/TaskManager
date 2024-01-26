@@ -1705,6 +1705,11 @@
   dependencies:
     stacktrace-js "^2.0.2"
 
+"@react-native-firebase/perf@^18.8.0":
+  version "18.8.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/perf/-/perf-18.8.0.tgz#dc7f61fbe70b7887092d8560330b67f4d5b93068"
+  integrity sha512-muWY6AmxglPqOGa+HTyBoyu/GbhFasA1Pax7Cf6vnpckFiem8J5QXWiV0uE93xspzPCMvQm1w0dHOd6Gyc2eEQ==
+
 "@react-native/assets-registry@0.73.1":
   version "0.73.1"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.73.1.tgz#e2a6b73b16c183a270f338dc69c36039b3946e85"

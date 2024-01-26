@@ -19,6 +19,11 @@ PODS:
   - Firebase/Crashlytics (10.19.0):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 10.19.0)
+  - Firebase/Performance (10.19.0):
+    - Firebase/CoreOnly
+    - FirebasePerformance (~> 10.19.0)
+  - FirebaseABTesting (10.20.0):
+    - FirebaseCore (~> 10.0)
   - FirebaseAnalytics (10.19.0):
     - FirebaseAnalytics/AdIdSupport (= 10.19.0)
     - FirebaseCore (~> 10.0)
@@ -58,6 +63,23 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FirebasePerformance (10.19.0):
+    - FirebaseCore (~> 10.5)
+    - FirebaseInstallations (~> 10.0)
+    - FirebaseRemoteConfig (~> 10.0)
+    - FirebaseSessions (~> 10.5)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/ISASwizzler (~> 7.8)
+    - GoogleUtilities/MethodSwizzler (~> 7.8)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseRemoteConfig (10.20.0):
+    - FirebaseABTesting (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - FirebaseSharedSwift (~> 10.0)
+    - GoogleUtilities/Environment (~> 7.8)
+    - "GoogleUtilities/NSData+zlib (~> 7.8)"
   - FirebaseSessions (10.20.0):
     - FirebaseCore (~> 10.5)
     - FirebaseCoreExtension (~> 10.0)
@@ -66,6 +88,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.10)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesSwift (~> 2.1)
+  - FirebaseSharedSwift (10.20.0)
   - fmt (6.2.1)
   - glog (0.3.5)
   - GoogleAppMeasurement (10.19.0):
@@ -98,6 +121,7 @@ PODS:
     - GoogleUtilities/Network
   - GoogleUtilities/Environment (7.12.0):
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/ISASwizzler (7.12.0)
   - GoogleUtilities/Logger (7.12.0):
     - GoogleUtilities/Environment
   - GoogleUtilities/MethodSwizzler (7.12.0):
@@ -1173,6 +1197,10 @@ PODS:
     - FirebaseCoreExtension (= 10.19.0)
     - React-Core
     - RNFBApp
+  - RNFBPerf (18.8.0):
+    - Firebase/Performance (= 10.19.0)
+    - React-Core
+    - RNFBApp
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -1230,18 +1258,23 @@ DEPENDENCIES:
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
+  - "RNFBPerf (from `../node_modules/@react-native-firebase/perf`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - Firebase
+    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FirebasePerformance
+    - FirebaseRemoteConfig
     - FirebaseSessions
+    - FirebaseSharedSwift
     - fmt
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -1354,6 +1387,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBCrashlytics:
     :path: "../node_modules/@react-native-firebase/crashlytics"
+  RNFBPerf:
+    :path: "../node_modules/@react-native-firebase/perf"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1363,13 +1398,17 @@ SPEC CHECKSUMS:
   FBLazyVector: fbc4957d9aa695250b55d879c1d86f79d7e69ab4
   FBReactNativeSpec: 86de768f89901ef6ed3207cd686362189d64ac88
   Firebase: 63ce8ece0d43743dc28eacac0c6867a2d7fd5a9d
+  FirebaseABTesting: 1d5d49804bcfc5fa782bc2491a8c1364e2cf7241
   FirebaseAnalytics: 87513010b13b7c8610164d3602ea10571f76afc1
   FirebaseCore: dc5c7badf99d47613c52b2e3a57a64cd187f8554
   FirebaseCoreExtension: c08d14c7b22e07994e876d837e6f58642f340087
   FirebaseCoreInternal: efeeb171ac02d623bdaefe121539939821e10811
   FirebaseCrashlytics: a4d2ad12f5c07ec8ee0ebc89133a45498a293ba6
   FirebaseInstallations: 558b1da7d65afeb996fd5c814332f013234ece4e
+  FirebasePerformance: 634a9b06effc436c991273d90053a2086dd2d427
+  FirebaseRemoteConfig: b873a427a48159082361343a85649eed3f5377ea
   FirebaseSessions: 2f348975f6d1c139231c180e12194161da2e0cd6
+  FirebaseSharedSwift: 2fbf73618288b7a36b2014b957745dcdd781389e
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 035f1e36e53b355cf70f6434d161b36e7d21fecd
   GoogleAppMeasurement: 68afe759316673c6554dac35a0c7ae8f5d6cb4ed
@@ -1424,6 +1463,7 @@ SPEC CHECKSUMS:
   RNFBAnalytics: bfd3c5acaa03d8eda405256a1593a8f29405b500
   RNFBApp: 5ee688b07ed0fa692a3a8fd07df6d6ae41e4c3a0
   RNFBCrashlytics: 1b5fbad3991ed14c09b5517aef2555ef487145de
+  RNFBPerf: e5d094806002b43f2b39554037070370b20006c7
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: e64aa65de36c0832d04e8c7bd614396c77a80047
 
