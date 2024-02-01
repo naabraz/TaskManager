@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, Text, View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import crashlytics from '@react-native-firebase/crashlytics';
 import analytics from '@react-native-firebase/analytics';
@@ -29,30 +30,32 @@ async function getRequest(url: string) {
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Text>Initial Screen</Text>
-          <Button title="Crash" onPress={() => crashlytics().crash()} />
-          <Button
-            title="Event"
-            onPress={async () =>
-              await analytics().logEvent('add_task', {
-                name: 'buy bread',
-              })
-            }
-          />
-          <Button
-            title="Perf Request"
-            onPress={() =>
-              getRequest('https://cadiesart.com/api/home/').then(json => {
-                console.log(json);
-              })
-            }
-          />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
+          <View>
+            <Text>Initial Screen</Text>
+            <Button title="Crash" onPress={() => crashlytics().crash()} />
+            <Button
+              title="Event"
+              onPress={async () =>
+                await analytics().logEvent('add_task', {
+                  name: 'buy bread',
+                })
+              }
+            />
+            <Button
+              title="Perf Request"
+              onPress={() =>
+                getRequest('https://cadiesart.com/api/home/').then(json => {
+                  console.log(json);
+                })
+              }
+            />
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }
 
