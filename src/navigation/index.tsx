@@ -10,7 +10,10 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const AppStack = () => (
-  <Stack.Navigator>
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}>
     <Stack.Screen name="Tab" component={TabBar} />
   </Stack.Navigator>
 );
