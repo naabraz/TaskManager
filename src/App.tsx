@@ -1,16 +1,12 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 
-const App = (): React.JSX.Element => (
+import { AppStack } from 'src/navigation';
+
+const App = () => (
   <NavigationContainer>
-    <SafeAreaView>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Text>Initial Screen</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <AppStack />
   </NavigationContainer>
 );
 
