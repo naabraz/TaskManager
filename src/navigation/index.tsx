@@ -8,17 +8,10 @@ import { faList, faAdd } from '@fortawesome/free-solid-svg-icons';
 import TaskList from 'src/screens/TaskList';
 import AddTask from 'src/screens/AddTask';
 
+import { linking } from './linking';
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
-
-const AppStack = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerShown: false,
-    }}>
-    <Stack.Screen name="Tab" component={TabBar} />
-  </Stack.Navigator>
-);
 
 const AddTaskIcon = (focused: boolean) => (
   <FontAwesomeIcon icon={faAdd} color={focused ? 'red' : 'black'} />
@@ -54,4 +47,13 @@ const TabBar = () => (
   </Tab.Navigator>
 );
 
-export { TabBar, AppStack };
+const AppStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}>
+    <Stack.Screen name="Tab" component={TabBar} />
+  </Stack.Navigator>
+);
+
+export { AppStack, linking };

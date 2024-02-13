@@ -2,10 +2,10 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import { AppStack } from 'src/navigation';
+import { AppStack, linking } from 'src/navigation';
 
 const App = () => (
-  <NavigationContainer>
+  <NavigationContainer linking={linking}>
     <AppStack />
   </NavigationContainer>
 );
