@@ -23,7 +23,8 @@
           "index"
         ]
       }
-    ]
+    ],
+    "import/no-named-as-default": 0
   },
   "settings": {
     "import/ignore": [

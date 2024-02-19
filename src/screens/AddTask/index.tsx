@@ -1,12 +1,13 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+
+import * as Styled from './styles';
 
 const AddTask = () => (
-  <ScrollView contentInsetAdjustmentBehavior="automatic">
-    <View>
-      <Text>Add Task Screen</Text>
-    </View>
-  </ScrollView>
+  <Styled.ScrollView contentInsetAdjustmentBehavior="automatic">
+    <Styled.View>
+      <Styled.Text>Add Task Screen</Styled.Text>
+    </Styled.View>
+  </Styled.ScrollView>
 );
 
 export default AddTask;
