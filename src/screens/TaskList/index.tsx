@@ -1,12 +1,20 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
-const TaskList = () => (
-  <ScrollView contentInsetAdjustmentBehavior="automatic">
-    <View>
-      <Text>Task List Screen</Text>
-    </View>
-  </ScrollView>
-);
+import { useTaskStore } from '../../hooks/useStore';
+
+const TaskList = () => {
+  const tasks = useTaskStore(state => state.tasks);
+
+  return (
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <View>
+        {tasks.map((task, index) => (
+          <Text key={index}>{task.name}</Text>
+        ))}
+      </View>
+    </ScrollView>
+  );
+};
 
 export default TaskList;

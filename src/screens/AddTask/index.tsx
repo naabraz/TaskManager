@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 
+import { useNavigation, ParamListBase } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import * as Styled from './styles';
+
+import { useTaskStore } from '../../hooks/useStore';
 
 const AddTask = () => {
   const [name, onChangeName] = useState('');
   const [description, onChangeDescription] = useState('');
 
-  const onPressSend = () => {
-    console.log('onPressSend');
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+  const addTodo = useTaskStore(state => state.addTask);
+
+  const addTask = () => {
+    addTodo({ name, description });
+    navigation.navigate('TaskList');
   };
 
   return (
@@ -26,7 +35,7 @@ const AddTask = () => {
 
       <Styled.ButtonView>
         <Styled.Button
-          onPress={onPressSend}
+          onPress={() => addTask()}
           title="Add Task"
           color="black"
           accessibilityLabel="Add new task"
