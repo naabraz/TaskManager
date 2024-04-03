@@ -8,11 +8,12 @@ const TaskList = () => {
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <View>
-        {tasks.map((task, index) => (
-          <Text key={index}>{task.name}</Text>
-        ))}
-      </View>
+      {tasks.map((task, index) => (
+        <View key={index}>
+          <Text>{task.name}</Text>
+          <Text>{task.description}</Text>
+        </View>
+      ))}
     </ScrollView>
   );
 };
