@@ -1,20 +1,48 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
 
+import { useNavigation, ParamListBase } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { faAdd } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
+import {
+  TasksList,
+  TaskContainer,
+  TaskName,
+  TaskDescription,
+  EmptyText,
+  AddTaskButton,
+} from './styles';
 import { useTaskStore } from '../../hooks/useStore';
 
 const TaskList = () => {
   const tasks = useTaskStore(state => state.tasks);
+  const emptyTasksMessage = "Woo hoo! You don't have any tasks!";
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
+  const addTask = () => {
+    navigation.navigate('AddTask');
+  };
 
   return (
-    <ScrollView contentInsetAdjustmentBehavior="automatic">
+    <TasksList contentInsetAdjustmentBehavior="automatic">
+      {!tasks.length && (
+        <TaskContainer>
+          <EmptyText>{emptyTasksMessage}</EmptyText>
+        </TaskContainer>
+      )}
+
       {tasks.map((task, index) => (
-        <View key={index}>
-          <Text>{task.name}</Text>
-          <Text>{task.description}</Text>
-        </View>
+        <TaskContainer key={index}>
+          <TaskName>{task.name}</TaskName>
+          <TaskDescription>{task.description}</TaskDescription>
+        </TaskContainer>
       ))}
-    </ScrollView>
+
+      <AddTaskButton onPress={addTask}>
+        <FontAwesomeIcon icon={faAdd} color="white" />
+      </AddTaskButton>
+    </TasksList>
   );
 };
 
