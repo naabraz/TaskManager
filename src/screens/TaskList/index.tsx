@@ -37,8 +37,8 @@ const TaskList = () => {
         </TaskContainer>
       )}
 
-      {tasks.map((task, index) => (
-        <TaskContainer key={index}>
+      {tasks.map(task => (
+        <TaskContainer key={task.id} $completed={task.completed}>
           <TaskName>{task.name}</TaskName>
           <TaskDescription>{task.description}</TaskDescription>
           <TaskDescription>

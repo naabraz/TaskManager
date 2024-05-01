@@ -4,8 +4,8 @@ export const TasksList = styled.ScrollView`
   background-color: gray;
 `;
 
-export const TaskContainer = styled.View`
-  background-color: cyan;
+export const TaskContainer = styled.View<{ $completed?: boolean }>`
+  background-color: ${props => (props.$completed ? 'darkcyan' : 'cyan')};
   margin-vertical: 14px;
   margin-horizontal: 24px;
   padding: 24px;
