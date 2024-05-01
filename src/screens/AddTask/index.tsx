@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import uuid from 'react-native-uuid';
+import { StyleSheet, View } from 'react-native';
+
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { FAB, TextInput } from 'react-native-paper';
+import uuid from 'react-native-uuid';
 
-import * as Styled from './styles';
-import { useTaskStore } from '../../hooks/useStore';
+import { useTaskStore } from 'src/hooks/useStore';
 
 const AddTask = () => {
   const [name, onChangeName] = useState('');
@@ -21,29 +23,48 @@ const AddTask = () => {
     navigation.navigate('TaskList');
   };
 
+  const styles = StyleSheet.create({
+    fab: {
+      marginTop: 20,
+      marginHorizontal: 20,
+    },
+    input: {
+      marginBottom: 20,
+      marginHorizontal: 20,
+    },
+    container: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: 'center',
+      backgroundColor: 'white',
+    },
+  });
+
   return (
-    <Styled.View>
-      <Styled.Input
-        onChangeText={onChangeName}
-        value={name}
+    <View style={styles.container}>
+      <TextInput
+        label="Task name"
         placeholder="Task name"
+        value={name}
+        onChangeText={onChangeName}
+        style={styles.input}
       />
 
-      <Styled.Input
-        onChangeText={onChangeDescription}
-        value={description}
+      <TextInput
+        label="Task description"
         placeholder="Task description"
+        value={description}
+        onChangeText={onChangeDescription}
+        style={styles.input}
       />
 
-      <Styled.ButtonView>
-        <Styled.Button
-          onPress={() => addTask()}
-          title="Add Task"
-          color="black"
-          accessibilityLabel="Add new task"
-        />
-      </Styled.ButtonView>
-    </Styled.View>
+      <FAB
+        icon="plus"
+        onPress={addTask}
+        label="Create Task"
+        style={styles.fab}
+      />
+    </View>
   );
 };
 

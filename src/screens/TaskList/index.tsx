@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Card, Text, IconButton, FAB, Divider } from 'react-native-paper';
+import { Card, Text, IconButton, FAB } from 'react-native-paper';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { TasksList } from './styles';
-import { useTaskStore } from '../../hooks/useStore';
+import { useTaskStore } from 'src/hooks/useStore';
 
 const IconNotCompleted = () => (
   <MaterialIcons name="radio-button-unchecked" size={24} />
@@ -50,10 +49,16 @@ const TaskList = () => {
     card: {
       marginBottom: 20,
     },
+    scrollView: {
+      padding: 24,
+      backgroundColor: 'white',
+    },
   });
 
   return (
-    <TasksList contentInsetAdjustmentBehavior="automatic">
+    <ScrollView
+      style={styles.scrollView}
+      contentInsetAdjustmentBehavior="automatic">
       {!tasks.length && (
         <>
           <Card style={styles.card}>
@@ -77,10 +82,8 @@ const TaskList = () => {
         </Fragment>
       ))}
 
-      <Divider />
-
       <FAB icon="plus" onPress={addTask} label="Add Task" style={styles.fab} />
-    </TasksList>
+    </ScrollView>
   );
 };
 
