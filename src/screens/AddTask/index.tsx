@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-
+import uuid from 'react-native-uuid';
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import * as Styled from './styles';
-
 import { useTaskStore } from '../../hooks/useStore';
 
 const AddTask = () => {
@@ -15,7 +14,10 @@ const AddTask = () => {
   const addTodo = useTaskStore(state => state.addTask);
 
   const addTask = () => {
-    addTodo({ name, description });
+    const id = uuid.v4() as string;
+
+    addTodo({ name, description, id, completed: false });
+
     navigation.navigate('TaskList');
   };
 

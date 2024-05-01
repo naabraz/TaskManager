@@ -35,7 +35,16 @@ export const AddTaskButton = styled.Pressable`
   align-self: center;
 `;
 
-export const AddTaskButtonTitle = styled.Text`
+export const RemoveTaskButton = styled.Pressable`
+  background-color: tomato;
+  padding: 16px;
+  align-items: center;
+  border-radius: 16px;
+  justify-content: center;
+  align-self: center;
+`;
+
+export const RemoveTaskButtonTitle = styled.Text`
   color: white;
-  font-size: 24px;
+  font-size: 16px;
 `;

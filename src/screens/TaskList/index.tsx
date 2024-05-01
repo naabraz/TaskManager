@@ -12,13 +12,18 @@ import {
   TaskDescription,
   EmptyText,
   AddTaskButton,
+  RemoveTaskButton,
+  RemoveTaskButtonTitle,
 } from './styles';
 import { useTaskStore } from '../../hooks/useStore';
 
 const TaskList = () => {
   const tasks = useTaskStore(state => state.tasks);
-  const emptyTasksMessage = "Woo hoo! You don't have any tasks!";
+  const removeTask = useTaskStore(state => state.removeTask);
+  const changeStatus = useTaskStore(state => state.changeStatus);
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
+  const emptyTasksMessage = "Woo hoo! You don't have any tasks!";
 
   const addTask = () => {
     navigation.navigate('AddTask');
@@ -36,6 +41,17 @@ const TaskList = () => {
         <TaskContainer key={index}>
           <TaskName>{task.name}</TaskName>
           <TaskDescription>{task.description}</TaskDescription>
+          <TaskDescription>
+            {`Completed: ${String(task.completed)}`}
+          </TaskDescription>
+
+          <RemoveTaskButton onPress={() => changeStatus(task.id)}>
+            <RemoveTaskButtonTitle>Complete</RemoveTaskButtonTitle>
+          </RemoveTaskButton>
+
+          <RemoveTaskButton onPress={() => removeTask(task.id)}>
+            <RemoveTaskButtonTitle>Remover</RemoveTaskButtonTitle>
+          </RemoveTaskButton>
         </TaskContainer>
       ))}
 
