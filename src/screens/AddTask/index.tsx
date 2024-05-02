@@ -32,13 +32,12 @@ const AddTask = () => {
       marginHorizontal: 20,
     },
     input: {
-      marginBottom: 20,
+      marginVertical: 20,
       marginHorizontal: 20,
     },
     container: {
       flex: 1,
       display: 'flex',
-      justifyContent: 'center',
       backgroundColor: 'white',
     },
   });

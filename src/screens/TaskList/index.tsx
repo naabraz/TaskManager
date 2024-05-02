@@ -55,6 +55,10 @@ const TaskList = () => {
       padding: 24,
       backgroundColor: 'white',
     },
+    taskCompleted: {
+      textDecorationLine: 'line-through',
+      textDecorationStyle: 'solid',
+    },
   });
 
   return (
@@ -79,6 +83,8 @@ const TaskList = () => {
               subtitle={task.description}
               left={() => CardButtonLeft(task.id, task.completed)}
               right={() => CardButtonRight(task.id)}
+              subtitleStyle={task.completed && styles.taskCompleted}
+              titleStyle={task.completed && styles.taskCompleted}
             />
           </Card>
         </Fragment>
