@@ -16,6 +16,8 @@ const IconCompleted = () => (
   <MaterialIcons name="radio-button-checked" size={24} />
 );
 
+const IconAddTask = () => <MaterialIcons name="add" size={24} />;
+
 const IconDelete = () => <MaterialIcons name="delete" size={24} />;
 
 const CardButtonLeft = (id: string, completed: boolean) => {
@@ -82,7 +84,12 @@ const TaskList = () => {
         </Fragment>
       ))}
 
-      <FAB icon="plus" onPress={addTask} label="Add Task" style={styles.fab} />
+      <FAB
+        icon={IconAddTask}
+        onPress={addTask}
+        label="Add Task"
+        style={styles.fab}
+      />
     </ScrollView>
   );
 };

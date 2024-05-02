@@ -4,9 +4,12 @@ import { StyleSheet, View } from 'react-native';
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FAB, TextInput } from 'react-native-paper';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import uuid from 'react-native-uuid';
 
 import { useTaskStore } from 'src/hooks/useStore';
+
+const IconAddTask = () => <MaterialIcons name="add" size={24} />;
 
 const AddTask = () => {
   const [name, onChangeName] = useState('');
@@ -59,7 +62,7 @@ const AddTask = () => {
       />
 
       <FAB
-        icon="plus"
+        icon={IconAddTask}
         onPress={addTask}
         label="Create Task"
         style={styles.fab}
