@@ -19,6 +19,7 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
+*.dSYM.*
 *.xcuserstate
 ios/.xcode.env.local
 
@@ -68,3 +69,6 @@ yarn-error.log
 #Google Firebase Credentials
 ios/GoogleService-Info.plist
 android/app/google-services.json
+
+#Fastlane iOS
+ios/fastlane
